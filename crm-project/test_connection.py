@@ -4,6 +4,7 @@ import psycopg2
 # Connection parameters
 db_config = {
     "host": "localhost",
+    "port": "5433",
     "database": "crm_dev",
     "user": "postgres",
     "password": "dev123"

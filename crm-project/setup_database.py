@@ -14,10 +14,10 @@ cursor = conn.cursor()
 
 with open('schema.sql', 'r') as f:
     schema_sql =f.read()
-    
+
 cursor.execute("DROP TABLE IF EXISTS leads;")
 conn.commit()
-    
+
 print("Creating leads table...")
 cursor.execute(schema_sql)
 conn.commit()
@@ -34,6 +34,6 @@ columns = cursor.fetchall()
 print("\nTable Structure:")
 for col in columns:
     print(f"  {col[0]}: {col[1]}")
-    
+
 cursor.close()
 conn.close()

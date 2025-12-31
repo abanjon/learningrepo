@@ -2,3 +2,6 @@
 .envrc
 .python-version
 __pycache__/
+.vscode/
+.aws/
+*.pem

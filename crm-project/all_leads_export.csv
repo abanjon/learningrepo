@@ -1,0 +1,22 @@
+id,company_name,contact_person,email,industry,status,created_at
+1,Acme Corp,John Smith,john@acme.com,Technology,New,2025-12-12 01:51:40.362958
+2,Beta Industries,Jane Doe,jane@beta.com,Manufacturing,Contacted,2025-12-12 01:51:40.362958
+3,Gamma LLC,Bob Johnson,bob@gamma.com,Healthcare,Qualified,2025-12-12 01:51:40.362958
+4,Delta Solutions,Alice Williams,alice@delta.com,Finance,New,2025-12-12 01:51:40.362958
+5,Epsilon Group,Charlie Brown,charlie@epsilon.com,Technology,Proposal Sent,2025-12-12 01:51:40.362958
+6,Google, Sundar Pichai,sundar@google.com,Technology,New,2025-12-12 01:51:40.362958
+7,Amazon, Jeff Bezos,jeff@amazon.com,Technology,Contacted,2025-12-12 01:51:40.362958
+8,Microsoft, Bill Gates,bill@microsoft.com,Technology,Qualified,2025-12-12 01:51:40.362958
+9,Facebook, Mark Zuckerberg,mark@facebook.com,Technology,Proposal Sent,2025-12-12 01:51:40.362958
+10,Tesla, Elon Musk,elon@tesla.com,Automotive,New,2025-12-12 01:51:40.362958
+11,Netflix, Reed Hastings,reed@netflix.com,Entertainment,Contacted,2025-12-12 01:51:40.362958
+12,Disney, Steve Jobs,steve@disney.com,Entertainment,Qualified,2025-12-12 01:51:40.362958
+13,Apple, Tim Cook,tim@apple.com,Technology,Proposal Sent,2025-12-12 01:51:40.362958
+14,IBM, Ginni Rometty,ginni@ibm.com,Technology,New,2025-12-12 01:51:40.362958
+15,Intel, Brian Krzanich,brian@intel.com,Technology,Contacted,2025-12-12 01:51:40.362958
+16,Cisco, Chuck Robbins,chuck@cisco.com,Technology,Qualified,2025-12-12 01:51:40.362958
+17,Oracle, Safra Catz,safra@oracle.com,Technology,Proposal Sent,2025-12-12 01:51:40.362958
+18,SAP, Bill McDermott,bill@sap.com,Technology,New,2025-12-12 01:51:40.362958
+19,Salesforce, Marc Benioff,marc@salesforce.com,Technology,Contacted,2025-12-12 01:51:40.362958
+20,Adobe, Shantanu Narayen,shantanu@adobe.com,Technology,Qualified,2025-12-12 01:51:40.362958
+21,Twitter, Jack Dorsey,jack@twitter.com,Technology,Proposal Sent,2025-12-12 01:51:40.362958

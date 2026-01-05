@@ -78,13 +78,3 @@ Distributed processing & analytics
 - **Testing:** pytest
 - **Data Formats:** CSV, JSON, Parquet
 
----
-
-## Why This Exists
-
-This repository exists as:
-	•	A portfolio-grade upskilling project
-	•	A learning log for advanced data engineering concepts
-	•	Evidence of hands-on, production-oriented thinking
-
-It is not a course solution, tutorial dump, or copy-paste demo.

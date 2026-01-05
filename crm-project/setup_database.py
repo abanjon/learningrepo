@@ -13,13 +13,20 @@ conn = psycopg2.connect(**db_config)
 cursor = conn.cursor()
 
 with open('schema.sql', 'r') as f:
-    schema_sql =f.read()
+    schema_sql = f.read()
+
+with open('add_constraints.sql', 'r') as d:
+    constraints_sql = d.read()
+
+
 
 cursor.execute("DROP TABLE IF EXISTS leads;")
 conn.commit()
 
 print("Creating leads table...")
 cursor.execute(schema_sql)
+cursor.execute(constraints_sql)
+
 conn.commit()
 
 print("Table created successfuly!")

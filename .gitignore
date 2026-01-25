@@ -1,10 +1,23 @@
-.venv
-.envrc
-.python-version
+# Python
 __pycache__/
-.vscode/
-.aws/
-*.pem
-.csv
-.json
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
 
+# ETL generated files
+data/processed/
+data/failed/
+data/archive/
+logs/
+reports/
+*.log
+etl_errors.log
+
+# Test files
+test_csv.py
+*.csv

@@ -1,15 +1,11 @@
 [project]
 name = "crm-project"
 version = "0.1.0"
-description = "Add your description here"
+description = "crm-project is a Customer Relationship Management (CRM) system designed to help businesses manage their interactions with current and potential customers."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-<<<<<<< HEAD
-    "psycopg2-binary>=2.9.11",
-=======
     "faker>=40.1.2",
     "pandas>=3.0.0",
-    "psycopg2>=2.9.11",
->>>>>>> my-etl-changes
+    "psycopg2>=2.9.11"
 ]

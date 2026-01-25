@@ -5,5 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+<<<<<<< HEAD
     "psycopg2-binary>=2.9.11",
+=======
+    "faker>=40.1.2",
+    "pandas>=3.0.0",
+    "psycopg2>=2.9.11",
+>>>>>>> my-etl-changes
 ]

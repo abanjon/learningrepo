@@ -1,9 +1,12 @@
 import re
-from datetime import datetime
+import config
+
 
 class ValidationError(Exception):
     """Custom exception for validation failure"""
+
     pass
+
 
 class LeadValidator:
     """
@@ -15,7 +18,7 @@ class LeadValidator:
 
     def __init__(self):
         """Initialize with empty error list"""
-        self.errors = [] # List to collect all validation errors
+        self.errors = []  # List to collect all validation errors
 
     def validate_lead(self, lead):
         """
@@ -74,7 +77,7 @@ class LeadValidator:
 
         # Check for invalid characters
         # Regex ^ = start, $ = end, [] = allowed chars, + = one or more
-        if not re.match(r'^[a-zA-Z0-9\s\-&.]+$', company):
+        if not re.match(r'^[a-zA-Z0-9\s\-\&.,\'"]+$', company):
             self.errors.append("Company name contains invalid characters")
 
     def _validate_email(self, lead):
@@ -94,7 +97,7 @@ class LeadValidator:
 
         # Simple email regex
         # Breakdown: something @ something . something
-        email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         if not re.match(email_pattern, email):
             self.errors.append("Invalid email format")
 
@@ -111,24 +114,13 @@ class LeadValidator:
         """
         industry = lead.get("industry")
 
-        # Allowed industries (business logic)
-        allowed_industries = [
-            "Technology",
-            "Healthcare",
-            "Finance",
-            "Manufacturing",
-            "Retail",
-            "Education",
-            "Other"
-        ]
-
         # Skip validation if not provided (optional field)
         if not industry:
             return
 
-        if industry not in allowed_industries:
+        if industry not in config.ALLOWED_INDUSTRIES:
             self.errors.append(
-                f"Industry must be of of: {', '.join(allowed_industries)}"
+                f"Industry must be of of: {', '.join(config.ALLOWED_INDUSTRIES)}"
             )
 
     def _validate_status(self, lead):
@@ -141,14 +133,12 @@ class LeadValidator:
         """
         status = lead.get("status")
 
-        valid_statuses = ["New", "Contacted", "Qualified", "Proposal Sent", "Converted", "Lost"]
-
         if not status:
             return
 
-        if status not in valid_statuses:
+        if status not in config.VALID_STATUSES:
             self.errors.append(
-                f"Status must be one of: {', '.join(valid_statuses)}"
+                f"Status must be one of: {', '.join(config.VALID_STATUSES)}"
             )
 
     def _validate_phone(self, lead):
@@ -157,7 +147,7 @@ class LeadValidator:
         if not phone_num:
             return
 
-        phone_num_pattern = r'^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$'
+        phone_num_pattern = r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"
         if not re.match(phone_num_pattern, phone_num):
             self.errors.append("Invalid phone number")
 
@@ -178,10 +168,8 @@ class LeadValidator:
         status = lead.get("status")
         contact_person = lead.get("contact_person")
 
-        if (status == "Converted" and contact_person == ""):
+        if status == "Converted" and contact_person == "":
             self.errors.append("Status cannot be converted without contact person")
-
-
 
     def get_errors(self):
         """Return list of all validation errors"""

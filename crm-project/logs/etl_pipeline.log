@@ -1,0 +1,122 @@
+2026-01-25 09:37:11,156 - INFO - Initialized Dependencies
+2026-01-25 09:37:11,156 - INFO - Starting pipeline execution
+2026-01-25 09:37:11,156 - INFO - Splitting and processing data/input/sales_team_west.csv
+2026-01-25 09:37:11,194 - INFO - Starting load: data/processed/valid_sales_team_west.csv -> leads
+2026-01-25 09:37:11,209 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:37:11,209 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:37:11,210 - INFO - Splitting and processing data/input/sales_team_south.csv
+2026-01-25 09:37:11,220 - INFO - Starting load: data/processed/valid_sales_team_south.csv -> leads
+2026-01-25 09:37:11,233 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:37:11,233 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:37:11,234 - INFO - Splitting and processing data/input/sales_team_east.csv
+2026-01-25 09:37:11,244 - INFO - Starting load: data/processed/valid_sales_team_east.csv -> leads
+2026-01-25 09:37:11,256 - INFO - Load complete: 40 loaded, 0 failed
+2026-01-25 09:37:11,256 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:37:11,257 - INFO - Pipeline execution complete
+2026-01-25 09:37:11,257 - INFO - Generating reports
+2026-01-25 09:37:11,268 - INFO - Reports generated
+2026-01-25 09:39:25,031 - INFO - Initialized Dependencies
+2026-01-25 09:39:25,031 - INFO - Starting pipeline execution
+2026-01-25 09:39:25,031 - INFO - Pipeline execution complete
+2026-01-25 09:39:25,031 - INFO - Generating reports
+2026-01-25 09:39:25,066 - INFO - Reports generated
+2026-01-25 09:40:21,185 - INFO - Initialized Dependencies
+2026-01-25 09:40:21,185 - INFO - Starting pipeline execution
+2026-01-25 09:40:21,185 - INFO - Splitting and processing data/input/sales_team_west.csv
+2026-01-25 09:40:21,224 - INFO - Starting load: data/processed/valid_sales_team_west.csv -> leads
+2026-01-25 09:40:21,244 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:40:21,244 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:40:21,246 - INFO - Splitting and processing data/input/sales_team_south.csv
+2026-01-25 09:40:21,256 - INFO - Starting load: data/processed/valid_sales_team_south.csv -> leads
+2026-01-25 09:40:21,270 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:40:21,270 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:40:21,271 - INFO - Splitting and processing data/input/sales_team_east.csv
+2026-01-25 09:40:21,280 - INFO - Starting load: data/processed/valid_sales_team_east.csv -> leads
+2026-01-25 09:40:21,292 - INFO - Load complete: 40 loaded, 0 failed
+2026-01-25 09:40:21,292 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:40:21,293 - INFO - Pipeline execution complete
+2026-01-25 09:40:21,293 - INFO - Generating reports
+2026-01-25 09:40:21,309 - INFO - Reports generated
+2026-01-25 09:41:27,396 - INFO - Initialized Dependencies
+2026-01-25 09:41:27,396 - INFO - Starting pipeline execution
+2026-01-25 09:41:27,396 - INFO - Splitting and processing data/input/sales_team_west.csv
+2026-01-25 09:41:27,438 - INFO - Starting load: data/processed/valid_sales_team_west.csv -> leads
+2026-01-25 09:41:27,455 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:41:27,455 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:41:27,456 - INFO - Splitting and processing data/input/sales_team_south.csv
+2026-01-25 09:41:27,469 - INFO - Starting load: data/processed/valid_sales_team_south.csv -> leads
+2026-01-25 09:41:27,483 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:41:27,483 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:41:27,484 - INFO - Splitting and processing data/input/sales_team_east.csv
+2026-01-25 09:41:27,494 - INFO - Starting load: data/processed/valid_sales_team_east.csv -> leads
+2026-01-25 09:41:27,508 - INFO - Load complete: 40 loaded, 0 failed
+2026-01-25 09:41:27,508 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:41:27,511 - INFO - Pipeline execution complete
+2026-01-25 09:41:27,511 - INFO - Generating reports
+2026-01-25 09:41:27,523 - INFO - Reports generated
+2026-01-25 09:42:04,635 - INFO - Initialized Dependencies
+2026-01-25 09:42:04,635 - INFO - Starting pipeline execution
+2026-01-25 09:42:04,635 - INFO - Splitting and processing data/input/sales_team_west.csv
+2026-01-25 09:42:04,673 - INFO - Starting load: data/processed/valid_sales_team_west.csv -> leads
+2026-01-25 09:42:04,688 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:42:04,688 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:42:04,689 - INFO - Splitting and processing data/input/sales_team_south.csv
+2026-01-25 09:42:04,700 - INFO - Starting load: data/processed/valid_sales_team_south.csv -> leads
+2026-01-25 09:42:04,714 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 09:42:04,714 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:42:04,715 - INFO - Splitting and processing data/input/sales_team_east.csv
+2026-01-25 09:42:04,725 - INFO - Starting load: data/processed/valid_sales_team_east.csv -> leads
+2026-01-25 09:42:04,737 - INFO - Load complete: 40 loaded, 0 failed
+2026-01-25 09:42:04,737 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 09:42:04,738 - INFO - Pipeline execution complete
+2026-01-25 09:42:04,738 - INFO - Generating reports
+2026-01-25 09:42:04,747 - INFO - Reports generated
+2026-01-25 10:00:46,453 - INFO - Initialized Dependencies
+2026-01-25 10:00:46,453 - INFO - Starting pipeline execution
+2026-01-25 10:00:46,453 - INFO - Splitting and processing data/input/sales_team_west.csv
+2026-01-25 10:00:46,558 - INFO - Starting load: data/processed/valid_sales_team_west.csv -> leads
+2026-01-25 10:00:46,573 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 10:00:46,573 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 10:00:46,574 - INFO - Splitting and processing data/input/invalid_leads.csv
+2026-01-25 10:00:46,578 - INFO - Splitting and processing data/input/sales_team_south.csv
+2026-01-25 10:00:46,592 - INFO - Starting load: data/processed/valid_sales_team_south.csv -> leads
+2026-01-25 10:00:46,608 - INFO - Load complete: 45 loaded, 0 failed
+2026-01-25 10:00:46,608 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 10:00:46,609 - INFO - Splitting and processing data/input/sales_team_east.csv
+2026-01-25 10:00:46,625 - INFO - Starting load: data/processed/valid_sales_team_east.csv -> leads
+2026-01-25 10:00:46,639 - INFO - Load complete: 40 loaded, 0 failed
+2026-01-25 10:00:46,639 - INFO - CSVLoader: Context manager closing connection...
+2026-01-25 10:00:46,640 - INFO - Pipeline execution complete
+2026-01-25 10:00:46,640 - INFO - Generating reports
+2026-01-25 10:00:46,654 - INFO - Reports generated
+2026-01-25 10:01:37,107 - INFO - Initialized Dependencies
+2026-01-25 10:01:37,108 - INFO - Starting pipeline execution
+2026-01-25 10:01:37,108 - INFO - Splitting and processing data/input/sales_team_west.csv
+2026-01-25 10:01:37,137 - ERROR - Error splitting data/input/sales_team_west.csv: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-25 10:01:37,137 - INFO - Moved sales_team_west.csv to failed
+2026-01-25 10:01:37,137 - INFO - Splitting and processing data/input/invalid_leads.csv
+2026-01-25 10:01:37,140 - INFO - Splitting and processing data/input/sales_team_south.csv
+2026-01-25 10:01:37,150 - ERROR - Error splitting data/input/sales_team_south.csv: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-25 10:01:37,150 - INFO - Moved sales_team_south.csv to failed
+2026-01-25 10:01:37,150 - INFO - Splitting and processing data/input/sales_team_east.csv
+2026-01-25 10:01:37,154 - ERROR - Error splitting data/input/sales_team_east.csv: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-25 10:01:37,155 - INFO - Moved sales_team_east.csv to failed
+2026-01-25 10:01:37,155 - INFO - Pipeline execution complete
+2026-01-25 10:01:37,155 - INFO - Generating reports
+2026-01-25 10:02:26,484 - INFO - Initialized Dependencies
+2026-01-25 10:02:26,484 - INFO - Starting pipeline execution
+2026-01-25 10:02:26,484 - INFO - Pipeline execution complete
+2026-01-25 10:02:26,484 - INFO - Generating reports
+2026-01-25 10:02:26,521 - INFO - Reports generated

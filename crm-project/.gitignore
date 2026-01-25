@@ -1,0 +1,13 @@
+# Inside crm-project/.gitignore
+__pycache__/
+*.py[cod]
+
+# Generated files
+data/
+logs/
+reports/
+*.log
+*.csv
+.envrc
+.env
+.venv/

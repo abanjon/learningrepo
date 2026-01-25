@@ -5,6 +5,22 @@ __pycache__/
 .vscode/
 .aws/
 *.pem
-.csv
-.json
+*.csv
+*.json
 
+# 1. First, abort the current failed merge
+git merge --abort
+
+# 2. Save your local changes to a temporary branch
+git checkout -b my-etl-changes
+git add .
+git commit -m "Save my ETL pipeline changes"
+
+# 3. Go back to main and pull/merge cleanly
+git checkout main
+git pull origin main  # or whatever merge you were trying
+
+# 4. Now merge your ETL changes back
+git merge my-etl-changes
+
+# If there are conflicts, resolve them manually

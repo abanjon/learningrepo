@@ -1,17 +1,12 @@
 import csv
 import psycopg2
 import logging
-from datetime import datetime
-from validator import LeadValidator # Import our validator
+from src.validator import LeadValidator  # Import our validator
 
 # Configure logging (do this ONCE at module level, not in __init__)
-logging.basicConfig(
-    filename = 'etl_errors.log',
-    level = logging.ERROR,
-    format = '%(asctime)s - %(levelname)s - %(message)s'
-)
 
 logger = logging.getLogger(__name__)
+
 
 class CSVLoader:
     """Loads CSV fies into PostgreSQL tables"""
@@ -23,90 +18,106 @@ class CSVLoader:
             db_config: Dictionary with connection parameters
         """
         # Create connection and store it in instance variable
-        self.conn = psycopg2.connect(**db_config)
+        self.db_config = db_config
+        self.conn = None
+        self.cursor = None
+        self.validator = None
+        print("CSVLoader initialized (connection not established yet)")
+
+    def __enter__(self):
+        print("CSVLoader initialized: Establishing Connection")
+        self.conn = psycopg2.connect(**self.db_config)
         self.cursor = self.conn.cursor()
-        self.validator = LeadValidator() # Create validator instance
-        print("CSVLoader initialized and connected to database")
+        self.validator = LeadValidator()
+        return self
 
     def load_csv(self, filepath, table_name):
-      """
-      Load CSV with validation.
+        """
+        Load CSV with validation.
 
-      Returns:
-          dict with stats: {
-                'total_rows': int,
-                'loaded': int,
-                'failed': int,
-                'errors': list of dicts
-                }
-      """
-      print(f"Loading {filepath} into {table_name}...")
-      logger.info(f"Starting load: {filepath} -> {table_name}")
+        Returns:
+            dict with stats: {
+                  'total_rows': int,
+                  'loaded': int,
+                  'failed': int,
+                  'errors': list of dicts
+                  }
+        """
+        if self.validator is None:
+            self.validator = LeadValidator()
 
-      # Track stats
-      stats = {
-          'total_rows': 0,
-          'loaded': 0,
-          'failed': 0,
-          'errors': []
-      }
+        print(f"Loading {filepath} into {table_name}...")
+        logger.info(f"Starting load: {filepath} -> {table_name}")
 
-      with open(filepath, 'r') as f:
-          reader = csv.DictReader(f)
+        # Track stats
+        stats = {"total_rows": 0, "loaded": 0, "failed": 0, "errors": []}
 
-          for row_num, row in enumerate(reader, start=1):
-              stats['total_rows'] += 1
+        with open(filepath, "r") as f:
+            reader = csv.DictReader(f)
 
-              # Validate before inserting
-              if self.validator.validate_lead(row):
-                  # Valid - insert to db
-                  try:
-                      sql = """
-                          INSERT INTO leads (company_name, contact_person, email, industry, status)
-                          VALUES (%s, %s, %s, %s, %s)
-                      """
-                      self.cursor.execute(sql, (
-                          row['company_name'],
-                          row.get('contact_person'),
-                          row['email'],
-                          row.get('industry'),
-                          row.get('status', 'New')
-                      ))
-                      stats['loaded'] += 1
+            for row_num, row in enumerate(reader, start=1):
+                stats["total_rows"] += 1
 
-                  except Exception as e:
-                      # Database error (e.g, duplicate key) - LOG IT
-                      error_msg = f"Row {row_num}: Database error - {str(e)}"
-                      logger.error(error_msg)
-                      logger.error(f"   Data: {row}")
+                # Validate before inserting
+                if self.validator.validate_lead(row):
+                    # Valid - insert to db
+                    try:
+                        sql = """
+                              INSERT INTO leads (company_name, contact_person, email, industry, status)
+                              VALUES (%s, %s, %s, %s, %s)
+                              ON CONFLICT (email) DO NOTHING
+                          """
+                        self.cursor.execute(
+                            sql,
+                            (
+                                row["company_name"],
+                                row.get("contact_person"),
+                                row["email"],
+                                row.get("industry"),
+                                row.get("status", "New"),
+                            ),
+                        )
+                        stats["loaded"] += 1
 
-                      stats['failed'] += 1
-                      stats['errors'].append({
-                      'row': row_num,
-                      'data': row,
-                      'error': self.validator.get_errors()
-                  })
+                    except Exception as e:
+                        # Database error (e.g, duplicate key) - LOG IT
+                        error_msg = f"Row {row_num}: Database error - {str(e)}"
+                        logger.error(error_msg)
+                        logger.error(f"   Data: {row}")
 
-              else:
-                  # Invalid - log errors
-                  error_msg = f"Row {row_num}: Validation failed"
-                  logger.error(error_msg)
-                  logger.error(f"   Errors: {self.validator.get_errors()}")
-                  logger.error(f"   Data: {row}")
+                        stats["failed"] += 1
+                        stats["errors"].append(
+                            {
+                                "row": row_num,
+                                "data": row,
+                                "error": self.validator.get_errors(),
+                            }
+                        )
 
-                  stats['failed'] += 1
-                  stats['errors'].append({
-                      'row': row_num,
-                      'data': row,
-                      'error': self.validator.get_errors()
-                  })
+                else:
+                    # Invalid - log errors
+                    error_msg = f"Row {row_num}: Validation failed"
+                    logger.error(error_msg)
+                    logger.error(f"   Errors: {self.validator.get_errors()}")
+                    logger.error(f"   Data: {row}")
 
-          # Commit all successful inserts
-          self.conn.commit()
+                    stats["failed"] += 1
+                    stats["errors"].append(
+                        {
+                            "row": row_num,
+                            "data": row,
+                            "error": self.validator.get_errors(),
+                        }
+                    )
 
-      logger.info(f"Load complete: {stats['loaded']} loaded, {stats['failed']} failed")
+            # Commit all successful inserts
+            self.conn.commit()
 
-      return stats
+        logger.info(
+            f"Load complete: {stats['loaded']} loaded, {stats['failed']} failed"
+        )
+
+        return stats
 
     def get_row_count(self, table_name):
         """
@@ -129,10 +140,24 @@ class CSVLoader:
 
     def close(self):
         """Close database connection"""
-        self.cursor.close()
-        self.conn.close()
-        print("Connection Closed!")
+        if self.cursor:
+            self.cursor.close()
+            self.cursor = None
 
+        if self.conn:
+            self.conn.close()
+            self.conn = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """
+        Context manager exit point
+        Always called, even if error occured
+        """
+        logger.info("CSVLoader: Context manager closing connection...")
+
+        self.close()
+
+        return False
 
 
 if __name__ == "__main__":
@@ -140,14 +165,13 @@ if __name__ == "__main__":
         "host": "localhost",
         "database": "crm_dev",
         "user": "postgres",
-        "password": "dev123"
+        "password": "dev123",
     }
 
     loader = CSVLoader(db_config)
-    loader.load_csv('leads_sample.csv', 'leads')
+    loader.load_csv("leads_sample.csv", "leads")
 
-
-    count = loader.get_row_count('leads')
+    count = loader.get_row_count("leads")
     print(f"Total rows in leads table: {count}")
 
     loader.close()

@@ -1,7 +1,7 @@
 # File: query_runner.py
 import psycopg2
 import csv
-from datetime import datetime
+
 
 class QueryRunner:
     """
@@ -13,14 +13,34 @@ class QueryRunner:
 
     def __init__(self, db_config):
         """
-        Initialize with database connection.
-
-        Why store connection? Reuse for multiple queries (efficient).
-        Alternative: open/close for each query (wasteful).
+        Initialize with database configuration.
+        Don't connect yet - connection will be made in __enter__
         """
-        self.conn = psycopg2.connect(**db_config)
+        self.db_config = db_config  # Store config
+        self.conn = None  # Will be set in __enter__
+        self.cursor = None  # Will be set in __enter__
+        print("QueryRunner initialized (connection not yet established)")
+
+    def __enter__(self):
+        """
+        Context manager entry point
+        Called when using 'with QueryRunner()'
+        """
+        print("QueryRunner: Establishing connection...")
+        self.conn = psycopg2.connect(**self.db_config)
         self.cursor = self.conn.cursor()
-        print("QueryRunner initialized")
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """
+        Context manager exit point
+        Always called, even if an error occurred
+        """
+        print("QueryRunner: Closing connection...")
+        self.close()
+        if exc_type:
+            print(f"QueryRunner error: {exc_val}")
+        return False
 
     def run_query(self, sql, params=None):
         """
@@ -63,18 +83,18 @@ class QueryRunner:
         return results
 
     def run_query_from_file(self, filepath, query_name):
-       """
-       Read SQL file, find named query, execute it.
+        """
+        Read SQL file, find named query, execute it.
 
-       SQL file format:
-       -- @query: query_name_here
-       SELECT ...
+        SQL file format:
+        -- @query: query_name_here
+        SELECT ...
 
-       -- @query: another_query
-       SELECT ...
-       """
-       # TODO: Read file, parse queries, find the one matching query_name, run it
-       pass
+        -- @query: another_query
+        SELECT ...
+        """
+        # TODO: Read file, parse queries, find the one matching query_name, run it
+        pass
 
     def export_to_csv(self, sql, output_file, params=None):
         """
@@ -103,7 +123,7 @@ class QueryRunner:
 
         # Open file in write mode
         # newline='' prevents extra blank lines on Windows
-        with open(output_file, 'w', newline='') as f:
+        with open(output_file, "w", newline="") as f:
             # Get column names from first result dictionary
             # .keys() returns all keys (column names)
             # list() converts to list for DictWriter
@@ -133,17 +153,20 @@ class QueryRunner:
         stats = {}
 
         # Total row count
-        stats['total_rows'] = self.run_query(
+        stats["total_rows"] = self.run_query(
             f"SELECT COUNT(*) as count FROM {table_name}"
-        )[0]['count']
+        )[0]["count"]
 
         # Column names and types
-        column_info = self.run_query(f"""
+        column_info = self.run_query(
+            """
             SELECT column_name, data_type
             FROM information_schema.columns
             WHERE table_name = %s
-        """, (table_name,))
-        stats['columns'] = column_info
+        """,
+            (table_name,),
+        )
+        stats["columns"] = column_info
 
         return stats
 

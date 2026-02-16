@@ -1,0 +1,7 @@
+Summary: {'total_records': 8, 'valid_count': 4, 'invalid_count': 4, 'pass_rate': '50.0%'}
+Errors per field: {'restaurant_name': 2, 'inspection_date': 2, 'score': 2, 'inspector_id': 1}
+Most common error field: restaurant_name
+Total errors: 7
+Highest inspection score: Green Leaf Cafe
+Lowest inspection score: Pizza Palace
+Average inspection score: 87.5

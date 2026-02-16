@@ -1,0 +1,10 @@
+2026-02-11 09:02:43,680 [INFO validator: Starting validation of 8 records
+2026-02-11 09:02:43,682 [INFO validator: Record 1 passed validation
+2026-02-11 09:02:43,682 [INFO validator: Record 2 passed validation
+2026-02-11 09:02:43,682 [WARNING validator: Recrd 3 failed validation: Record 3: restaurant_name: field cannot be empty (got: ''); inspection_date: must be in YYYY-MM-DD format (got: 'not-a-date'); score: must be between 0 and 100 (got: 150); inspector_id: must match format INS-XXX (4 digits) (got: 'BADGE-99')
+2026-02-11 09:02:43,682 [INFO validator: Record 4 passed validation
+2026-02-11 09:02:43,682 [WARNING validator: Recrd 5 failed validation: Record 5: inspection_date: must be in YYYY-MM-DD format (got: '03/18/2024')
+2026-02-11 09:02:43,682 [WARNING validator: Recrd 6 failed validation: Record 6: score: must be an integer (got: 'ninety')
+2026-02-11 09:02:43,682 [INFO validator: Record 7 passed validation
+2026-02-11 09:02:43,682 [WARNING validator: Recrd 8 failed validation: Record 8: restaurant_name: field cannot be empty (got: '  ')
+2026-02-11 09:02:43,682 [INFO validator: Validation complete: 4 valid, 4 invalid out of 8 total

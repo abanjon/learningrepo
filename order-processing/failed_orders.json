@@ -1,0 +1,1 @@
+["Record 1: Invalid customer_email: invalid email format (got: 'bad-email')", "Record 1: Invalid total_amount: must be greater than zero (got: -10.0)", "Record 2: Invalid total_amount: must be a number (got: 'not-a-number')"]

@@ -7,6 +7,6 @@ def get_connection():
         host="localhost",
         port=5432,
         dbname="soundstream_dev",
-        user="admin",
-        password="admin",
+        user="postgres",
+        password="postgres",
     )

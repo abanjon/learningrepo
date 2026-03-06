@@ -3,11 +3,11 @@ import psycopg2
 from db import get_connection
 
 
-def create_tables():
-    conn = get_connection()
-    cursor = conn.cursor()
+def create_tables() -> None:
+    conn: psycopg2.extensions.connection = get_connection()
+    cursor: psycopg2.extensions.cursor = conn.cursor()
 
-    queries = [
+    queries: list[str] = [
         """
         CREATE TABLE IF NOT EXISTS artists (
         artist_id SERIAL PRIMARY KEY,

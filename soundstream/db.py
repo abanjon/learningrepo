@@ -2,7 +2,7 @@
 import psycopg2
 
 
-def get_connection():
+def get_connection() -> psycopg2.extensions.connection:
     return psycopg2.connect(
         host="localhost",
         port=5432,

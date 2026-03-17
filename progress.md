@@ -2,9 +2,9 @@
 
 ## Current State
 - **Current Week:** 2
-- **Current Session:** 1
-- **Status:** in_progress
-- **Total Sessions Completed:** 5/80
+- **Current Session:** 2
+- **Status:** ready
+- **Total Sessions Completed:** 6/80
 
 ## Session History
 
@@ -18,6 +18,7 @@
 | 1 | 4 | 2026-02-15 | 8/10 | Yes | week-1-session-4-retry | Remediation successful. Much better grasp of try/finally and dictionary iteration. |
 | 1 | 5 | 2026-03-15 | N/A | Yes | cumulative | SoundStream foundation built. Excellent query runner implementation and bulk insert logic. |
 | 2 | 1 | 2026-03-16 | 10/15 | No | week-2-session-1 | Struggled with normalization (2NF/3NF) and multi-table JOIN logic. Good coding, but needs conceptual review. |
+| 2 | 1 | 2026-03-17 | 10/10 | Yes | week-2-session-1-retry | Remediation successful. Clear understanding of 2NF/3NF and multi-table JOINs. |
 
 ## Cumulative Project State
 - **Branch:** cumulative
@@ -26,9 +27,9 @@
 - **Known Issues:** None
 
 ## Quiz Retry Tracker
-- **Active Retry:** Week 2, Session 1
-- **Retry Count:** 1
-- **Original Session:** 2-1
+- **Active Retry:** None
+- **Retry Count:** 0
+- **Original Session:** N/A
 
 ## Difficulty Notes
 - **Student Background:** Early-intermediate Python/SQL, completed prior CRM project with OOP, ETL, PostgreSQL
